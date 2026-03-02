@@ -18,3 +18,14 @@
 - Directory structure: `src/components/`, `src/pages/`, `src/services/`, `src/hooks/`, `src/styles/`
 - Brand color: `#1a5276` (deep blue) used in styles
 - PR #4 covers Phase 1 Tasks 1.1 and 1.6
+- PR #9 covers Phase 2 Tasks 2.4, 2.5, 2.6, 2.7, 2.8 (frontend wizard)
+- Multi-step wizard pattern: parent component manages state, passes down via props to step components
+- Form validation: inline validation on submit, error messages display below fields
+- State management: useState for wizard state (currentStep, formData), updateFormData callback pattern
+- Conditional rendering: toggle between AUTO/HOME insurance fields based on insuranceType
+- Card-based selection UI for coverage levels with visual feedback (selected state, hover effects)
+- CSS organization: component-specific CSS modules alongside components (e.g., QuoteWizard.css, CoverageSelection.css)
+- Responsive design: grid layouts with media queries, mobile-first approach
+- Professional insurance styling: blue (#1a5276) primary, green (#27ae60) for CTAs, clean cards with shadows
+- Client-side quote calculation: base rate + multipliers for age/size/coverage/deductible
+- Stepper UI: visual progress indicator with numbered circles, active/completed states

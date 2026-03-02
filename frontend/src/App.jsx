@@ -1,3 +1,4 @@
+import QuoteWizard from './components/QuoteWizard/QuoteWizard';
 import './App.css';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
         <p>Get your personalized insurance quote in minutes.</p>
       </header>
       <main className="app-main">
-        <p>Quote wizard coming soon…</p>
+        <QuoteWizard />
       </main>
     </div>
   );
