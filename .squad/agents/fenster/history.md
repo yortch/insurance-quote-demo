@@ -28,10 +28,8 @@
 - **SpotBugs false positives:** Spring constructor injection triggers EI_EXPOSE_REP2; suppress with spotbugs-exclude.xml filter for controller/service packages
 - **Hibernate ddl-auto:** Use `update` for dev (auto-creates schema), `validate` for prod (requires migrations), `create-drop` for tests
 - **Build plugin binding:** Checkstyle and SpotBugs must have `<executions>` sections with `<phase>verify</phase>` to run during `mvn verify`
-- **Global exception handling:** Use @RestControllerAdvice with @ExceptionHandler methods to centralize error handling; return structured ErrorResponse DTOs with status, error, message, details (field errors), timestamp
-- **Custom exceptions:** Domain-specific exceptions (e.g., QuoteNotFoundException) thrown by service layer, caught by global handler, translated to HTTP responses
-- **Service layer exceptions:** Services throw exceptions (not return null) for missing resources; controller lets exceptions propagate to global handler for consistent error responses
-- **CORS configuration:** WebConfig implements WebMvcConfigurer with addCorsMappings to allow frontend dev server (http://localhost:5173) access during development
-- **Validation enhancements:** Use @Min/@Max for numeric range validation (years, sizes), @DecimalMin for monetary minimums; custom messages improve API consumer experience
-- **SpotBugs DTO suppressions:** DTOs like ErrorResponse expose internal collections by design; suppress EI_EXPOSE_REP/EI_EXPOSE_REP2 in spotbugs-exclude.xml for model classes
+- **Global exception handling:** Use @RestControllerAdvice for centralized error handling; return ErrorResponse DTO with consistent structure (status, error, message, details, timestamp)
+- **Custom exceptions:** Throw custom exceptions (e.g., QuoteNotFoundException) from service layer; let GlobalExceptionHandler convert to appropriate HTTP responses
+- **CORS configuration:** Use WebMvcConfigurer.addCorsMappings() to configure CORS for API endpoints; set allowedOrigins, allowedMethods, allowedHeaders, and allowCredentials
+- **SpotBugs dead store:** Avoid assigning variables that are never read; in updateQuote, call findById().orElseThrow() directly without storing the result
 
