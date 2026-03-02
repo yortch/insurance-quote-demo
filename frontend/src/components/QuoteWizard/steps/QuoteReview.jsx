@@ -1,6 +1,12 @@
+import { useState } from 'react';
+import { createQuote } from '../../../services/quoteApi';
 import './QuoteReview.css';
 
 function QuoteReview({ formData, prevStep, goToStep }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [quoteResult, setQuoteResult] = useState(null);
+
   const calculateQuote = () => {
     let baseRate = 100;
 
@@ -36,7 +42,49 @@ function QuoteReview({ formData, prevStep, goToStep }) {
     return { monthlyPremium, annualPremium };
   };
 
-  const { monthlyPremium, annualPremium } = calculateQuote();
+  const { monthlyPremium, annualPremium } = quoteResult || calculateQuote();
+
+  const handleGetQuote = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    const quoteRequest = {
+      customerFirstName: formData.firstName,
+      customerLastName: formData.lastName,
+      customerEmail: formData.email,
+      customerPhone: formData.phone,
+      customerStreet: formData.street,
+      customerCity: formData.city,
+      customerState: formData.state,
+      customerZipCode: formData.zipCode,
+      insuranceType: formData.insuranceType,
+      vehicleYear: formData.vehicleYear ? parseInt(formData.vehicleYear) : null,
+      vehicleMake: formData.vehicleMake || null,
+      vehicleModel: formData.vehicleModel || null,
+      propertyType: formData.propertyType || null,
+      propertySize: formData.propertySize ? parseInt(formData.propertySize) : null,
+      yearBuilt: formData.yearBuilt ? parseInt(formData.yearBuilt) : null,
+      coverageLevel: formData.coverageLevel,
+      deductibleAmount: parseFloat(formData.deductible),
+    };
+
+    try {
+      const response = await createQuote(quoteRequest);
+      setQuoteResult({
+        monthlyPremium: response.monthlyPremium,
+        annualPremium: response.annualPremium,
+      });
+    } catch (err) {
+      setError(err.message || 'Failed to get quote. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleTryAgain = () => {
+    setError(null);
+    setQuoteResult(null);
+  };
 
   const handlePrint = () => {
     window.print();
@@ -134,8 +182,19 @@ function QuoteReview({ formData, prevStep, goToStep }) {
         </div>
       </div>
 
+      {error && (
+        <div className="error-message">
+          <p>
+            <strong>Error:</strong> {error}
+          </p>
+          <button type="button" className="btn-secondary" onClick={handleTryAgain}>
+            Try Again
+          </button>
+        </div>
+      )}
+
       <div className="quote-result">
-        <h3>Your Estimated Quote</h3>
+        <h3>{quoteResult ? 'Your Quote' : 'Your Estimated Quote'}</h3>
         <div className="premium-display">
           <div className="premium-amount">
             <div className="premium-label">Monthly Premium</div>
@@ -150,21 +209,27 @@ function QuoteReview({ formData, prevStep, goToStep }) {
           </div>
         </div>
         <p className="quote-disclaimer">
-          This is an estimated quote based on the information provided. Final rates may vary based
-          on additional underwriting factors.
+          {quoteResult
+            ? 'This quote is based on the information provided. Final rates may vary based on additional underwriting factors.'
+            : 'This is an estimated quote based on the information provided. Click "Get Quote" to get your actual rate.'}
         </p>
       </div>
 
       <div className="wizard-actions">
-        <button type="button" className="btn-secondary" onClick={prevStep}>
+        <button type="button" className="btn-secondary" onClick={prevStep} disabled={isLoading}>
           Back
         </button>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button type="button" className="btn-secondary" onClick={handlePrint}>
             Print Quote
           </button>
-          <button type="button" className="btn-primary">
-            Get Quote
+          <button
+            type="button"
+            className="btn-primary"
+            onClick={handleGetQuote}
+            disabled={isLoading || quoteResult !== null}
+          >
+            {isLoading ? 'Loading...' : quoteResult ? 'Quote Received' : 'Get Quote'}
           </button>
         </div>
       </div>
