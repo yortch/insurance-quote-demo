@@ -1,6 +1,9 @@
 package com.threeriverinsurance.model;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -38,6 +41,8 @@ public class QuoteRequest {
     @NotNull
     private InsuranceType insuranceType;
 
+    @Min(value = 1900, message = "Vehicle year must be 1900 or later")
+    @Max(value = 2100, message = "Vehicle year must be 2100 or earlier")
     private Integer vehicleYear;
 
     private String vehicleMake;
@@ -46,14 +51,18 @@ public class QuoteRequest {
 
     private String propertyType;
 
+    @Min(value = 1, message = "Property size must be positive")
     private Integer propertySize;
 
+    @Min(value = 1800, message = "Year built must be 1800 or later")
+    @Max(value = 2100, message = "Year built must be 2100 or earlier")
     private Integer yearBuilt;
 
     @NotNull
     private CoverageLevel coverageLevel;
 
     @NotNull
+    @DecimalMin(value = "0.0", inclusive = false, message = "Deductible amount must be greater than zero")
     private BigDecimal deductibleAmount;
 
     public String getCustomerFirstName() {

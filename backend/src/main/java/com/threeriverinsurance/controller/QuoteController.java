@@ -112,9 +112,6 @@ public class QuoteController {
             @PathVariable Long id,
             @Valid @RequestBody QuoteRequest request) {
         Quote quote = quoteService.updateQuote(id, request);
-        if (quote == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(QuoteMapper.toResponse(quote));
     }
 

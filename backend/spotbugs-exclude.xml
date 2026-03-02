@@ -9,4 +9,14 @@
         <Class name="~.*\.service\..*"/>
         <Bug pattern="EI_EXPOSE_REP2"/>
     </Match>
+    
+    <!-- Suppress EI_EXPOSE_REP and EI_EXPOSE_REP2 for ErrorResponse DTO -->
+    <Match>
+        <Class name="com.threeriverinsurance.model.ErrorResponse"/>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+    <Match>
+        <Class name="com.threeriverinsurance.model.ErrorResponse"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
 </FindBugsFilter>
