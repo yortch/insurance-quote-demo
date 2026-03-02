@@ -1,5 +1,6 @@
 package com.threeriverinsurance.service;
 
+import com.threeriverinsurance.exception.QuoteNotFoundException;
 import com.threeriverinsurance.model.InsuranceType;
 import com.threeriverinsurance.model.Quote;
 import com.threeriverinsurance.model.QuoteRequest;
@@ -39,10 +40,12 @@ public class QuoteService {
      * Gets a quote by ID.
      *
      * @param id the quote ID
-     * @return the quote or null if not found
+     * @return the quote
+     * @throws QuoteNotFoundException if the quote is not found
      */
     public Quote getQuote(Long id) {
-        return quoteRepository.findById(id).orElse(null);
+        return quoteRepository.findById(id)
+                .orElseThrow(() -> new QuoteNotFoundException(id));
     }
 
     /**
@@ -67,14 +70,13 @@ public class QuoteService {
      *
      * @param id the quote ID
      * @param request the updated quote request
-     * @return the updated quote or null if not found
+     * @return the updated quote
+     * @throws QuoteNotFoundException if the quote is not found
      */
     @Transactional
     public Quote updateQuote(Long id, QuoteRequest request) {
-        Quote existing = quoteRepository.findById(id).orElse(null);
-        if (existing == null) {
-            return null;
-        }
+        quoteRepository.findById(id)
+                .orElseThrow(() -> new QuoteNotFoundException(id));
 
         Quote updatedQuote = calculationService.calculatePremium(request);
         updatedQuote.setId(id);

@@ -68,9 +68,6 @@ public class QuoteController {
     @GetMapping("/{id}")
     public ResponseEntity<QuoteResponse> getQuote(@PathVariable Long id) {
         Quote quote = quoteService.getQuote(id);
-        if (quote == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(QuoteMapper.toResponse(quote));
     }
 
