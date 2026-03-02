@@ -1,0 +1,16 @@
+{
+  "assignments": [
+    {
+      "assignment_id": "squad-demo-001",
+      "universe": "the-usual-suspects",
+      "created_at": "2026-03-01T00:00:00Z",
+      "agents": [
+        {"name": "Keaton", "role": "Lead"},
+        {"name": "Verbal", "role": "Frontend Dev"},
+        {"name": "Fenster", "role": "Backend Dev"},
+        {"name": "McManus", "role": "DevOps"},
+        {"name": "Hockney", "role": "Tester"}
+      ]
+    }
+  ]
+}
