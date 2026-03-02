@@ -19,3 +19,13 @@
 - `application.yml` uses Spring multi-document format for profile-specific config (test profile section separated by `---`)
 - Checkstyle `FileTabCharacter` must be a module, not a property on `Checker`
 - **Never use hardcoded default credentials in `application.yml`** — use `${ENV_VAR}` without defaults for `DB_PASSWORD` and `DB_USERNAME`. GitGuardian flags default credentials as leaked secrets, blocking CI.
+- **Data model pattern:** JPA entities live in `model/` with validation annotations (@NotNull, @NotBlank, @Email); use proper column names with snake_case (customer_first_name) for DB portability
+- **DTO pattern:** Separate request/response DTOs from entities; use a QuoteMapper utility class for clean entity-DTO conversion
+- **Service layering:** QuoteCalculationService handles business logic (premium calculation), QuoteService handles CRUD with repository — keeps concerns separated
+- **Premium calculation:** Use BigDecimal for monetary values with explicit scale and rounding; factor-based approach (base rate × coverage multiplier × type factor × deductible discount) for transparent pricing
+- **REST conventions:** POST /api/quotes returns 201 Created; validation failures return 400; missing resources return 404; use @Valid for automatic DTO validation
+- **Swagger integration:** springdoc-openapi-starter-webmvc-ui (v2.7.0) auto-generates OpenAPI docs at /swagger-ui.html; use @Operation and @ApiResponse annotations for endpoint documentation
+- **SpotBugs false positives:** Spring constructor injection triggers EI_EXPOSE_REP2; suppress with spotbugs-exclude.xml filter for controller/service packages
+- **Hibernate ddl-auto:** Use `update` for dev (auto-creates schema), `validate` for prod (requires migrations), `create-drop` for tests
+- **Build plugin binding:** Checkstyle and SpotBugs must have `<executions>` sections with `<phase>verify</phase>` to run during `mvn verify`
+
