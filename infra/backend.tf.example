@@ -1,0 +1,29 @@
+# backend.tf.example — Azure Storage backend configuration for team collaboration
+#
+# This file shows how to configure Terraform to use Azure Storage for remote state.
+# Remote state enables team collaboration, prevents conflicts, and provides state locking.
+#
+# Setup instructions:
+# 1. Create the state storage infrastructure using infra/state/main.tf:
+#      cd infra/state
+#      terraform init
+#      terraform apply
+#
+# 2. Copy this file to backend.tf:
+#      cp backend.tf.example backend.tf
+#
+# 3. Update the values below with your actual resource names
+#
+# 4. Migrate local state to remote:
+#      terraform init -migrate-state
+#
+# 5. Commit backend.tf to version control (contains no secrets)
+
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "tfstate-rg"              # Created by infra/state/main.tf
+    storage_account_name = "tfstatethreerivers"      # Must be globally unique; update this
+    container_name       = "tfstate"                 # Created by infra/state/main.tf
+    key                  = "insurance-quote.tfstate" # Unique per environment/project
+  }
+}

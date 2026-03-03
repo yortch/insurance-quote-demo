@@ -103,6 +103,29 @@ GitHub Actions workflows run automatically on pull requests:
 - **Frontend CI** — triggered by changes in `frontend/`: lint and build
 - **Backend CI** — triggered by changes in `backend/`: compile, test, checkstyle, SpotBugs
 
+## Deployment
+
+The application uses GitHub Actions for continuous deployment to Azure:
+
+- **Frontend** — Deployed to Azure Static Web App on push to `main`
+- **Backend** — Deployed to Azure App Service on push to `main`
+
+### Required GitHub Secrets
+
+Configure these secrets in your repository settings (Settings → Secrets and variables → Actions):
+
+| Secret                              | Description                                                                 |
+| ----------------------------------- | --------------------------------------------------------------------------- |
+| `AZURE_CREDENTIALS`                 | Azure service principal JSON for authentication (format: `{"clientId": "...", "clientSecret": "...", "subscriptionId": "...", "tenantId": "..."}`) |
+| `AZURE_STATIC_WEB_APPS_API_TOKEN`   | Deployment token for Azure Static Web App (found in Azure Portal)          |
+| `AZURE_APP_NAME`                    | Name of the Azure App Service instance (e.g., `threerivers-insurance-api`) |
+| `TF_VAR_db_admin_username`          | PostgreSQL database admin username (for Terraform provisioning)            |
+| `TF_VAR_db_admin_password`          | PostgreSQL database admin password (for Terraform provisioning)            |
+
+### Manual Deployment
+
+Deployments can be triggered manually via the GitHub Actions UI using the `workflow_dispatch` event on the respective workflow.
+
 ## Implementation Plan
 
 See [Issue #1](https://github.com/yortch/insurance-quote-demo/issues/1) for the full implementation plan.
