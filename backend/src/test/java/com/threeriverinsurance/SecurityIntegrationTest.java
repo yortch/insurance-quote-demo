@@ -34,7 +34,7 @@ class SecurityIntegrationTest {
     void testSecurityHeaders() throws Exception {
         mockMvc.perform(get("/api/health"))
                 .andExpect(status().isOk())
-                .andExpect(header().string("X-Frame-Options", "DENY"))
+                .andExpect(header().string("X-Frame-Options", "SAMEORIGIN"))
                 .andExpect(header().exists("Content-Security-Policy"));
     }
 
@@ -47,7 +47,7 @@ class SecurityIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("X-Frame-Options", "DENY"))
+                .andExpect(header().string("X-Frame-Options", "SAMEORIGIN"))
                 .andExpect(header().exists("Content-Security-Policy"));
     }
 

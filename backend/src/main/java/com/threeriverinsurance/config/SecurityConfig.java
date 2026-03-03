@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .contentTypeOptions(contentTypeOptions -> contentTypeOptions.disable())
                         .xssProtection(xss -> xss.disable())
                         .cacheControl(cache -> cache.disable())
-                        .frameOptions(frame -> frame.deny())
+                        .frameOptions(frame -> frame.sameOrigin())
                         .httpStrictTransportSecurity(hsts -> hsts
                                 .includeSubDomains(true)
                                 .maxAgeInSeconds(31536000))
