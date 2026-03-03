@@ -1,0 +1,25 @@
+#Tue Mar 03 06:59:28 EST 2026
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\Application.java=1772489079198
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\config\\GlobalExceptionHandler.java=1772495567387
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\config\\WebConfig.java=1772495567390
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\config\\package-info.java=1772489079201
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\controller\\HealthController.java=1772489079206
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\controller\\QuoteController.java=1772495567392
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\controller\\package-info.java=1772489079209
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\exception\\QuoteNotFoundException.java=1772495567394
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\CoverageLevel.java=1772490201588
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\ErrorResponse.java=1772495567396
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\InsuranceType.java=1772490201591
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\Quote.java=1772490201594
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\QuoteMapper.java=1772490201599
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\QuoteRequest.java=1772495195296
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\QuoteResponse.java=1772490201605
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\QuoteStatus.java=1772490201608
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\model\\package-info.java=1772489079213
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\repository\\QuoteRepository.java=1772490201610
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\repository\\package-info.java=1772489079218
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\service\\QuoteCalculationService.java=1772490201613
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\service\\QuoteService.java=1772495567398
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\main\\java\\com\\threeriverinsurance\\service\\package-info.java=1772489079223
+C\:\\Users\\jbalderas\\source\\repos\\squad-demo\\backend\\src\\test\\resources\\application.properties=1772539129419
+configuration*?=C2B01EB5F9EC40678325B442CC5DA3FAA4B788C

@@ -86,6 +86,33 @@ Available Maven commands:
 | `mvn clean verify`   | Build, test, checkstyle, and SpotBugs analysis |
 | `mvn test`           | Run tests only (uses H2 in-memory database)    |
 
+## Testing
+
+### Frontend
+
+Run tests locally using Vitest:
+
+```bash
+cd frontend
+npm test                  # Run tests once
+npm run test:watch       # Run tests in watch mode
+npm run test:coverage    # Run tests with coverage report
+```
+
+Coverage reports are generated in `frontend/coverage/`.
+
+### Backend
+
+Run tests using Maven:
+
+```bash
+cd backend
+mvn clean verify         # Build, test, and run code quality checks
+mvn test                 # Run tests only with H2 in-memory database
+```
+
+JaCoCo coverage reports are generated in `backend/target/site/jacoco/`.
+
 ### Infrastructure
 
 ```bash
