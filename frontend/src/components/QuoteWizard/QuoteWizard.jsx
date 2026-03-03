@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import CustomerInfo from './steps/CustomerInfo';
-import PropertyVehicleDetails from './steps/PropertyVehicleDetails';
-import CoverageSelection from './steps/CoverageSelection';
-import QuoteReview from './steps/QuoteReview';
+import { useState, lazy, Suspense } from 'react';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import './QuoteWizard.css';
+
+const CustomerInfo = lazy(() => import('./steps/CustomerInfo'));
+const PropertyVehicleDetails = lazy(() => import('./steps/PropertyVehicleDetails'));
+const CoverageSelection = lazy(() => import('./steps/CoverageSelection'));
+const QuoteReview = lazy(() => import('./steps/QuoteReview'));
 
 const STEPS = [
   { id: 1, name: 'Customer Info', component: CustomerInfo },
@@ -15,7 +17,6 @@ const STEPS = [
 function QuoteWizard() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
-    // Step 1: Customer Info
     firstName: '',
     lastName: '',
     email: '',
@@ -24,7 +25,6 @@ function QuoteWizard() {
     city: '',
     state: '',
     zipCode: '',
-    // Step 2: Property/Vehicle Details
     insuranceType: 'AUTO',
     vehicleYear: '',
     vehicleMake: '',
@@ -32,7 +32,6 @@ function QuoteWizard() {
     propertyType: '',
     propertySize: '',
     yearBuilt: '',
-    // Step 3: Coverage Selection
     coverageLevel: 'COMPREHENSIVE',
     deductible: '1000',
   });
@@ -60,28 +59,31 @@ function QuoteWizard() {
   const CurrentStepComponent = STEPS[currentStep - 1].component;
 
   return (
-    <div className="quote-wizard">
-      <div className="wizard-stepper">
+    <div className="quote-wizard" role="main" aria-label="Insurance Quote Wizard">
+      <nav className="wizard-stepper" aria-label="Quote wizard progress">
         {STEPS.map((step) => (
           <div
             key={step.id}
             className={`step ${currentStep === step.id ? 'active' : ''} ${currentStep > step.id ? 'completed' : ''}`}
+            aria-current={currentStep === step.id ? 'step' : undefined}
           >
-            <div className="step-number">{step.id}</div>
+            <div className="step-number" aria-hidden="true">{step.id}</div>
             <div className="step-name">{step.name}</div>
           </div>
         ))}
-      </div>
+      </nav>
 
-      <div className="wizard-content">
-        <CurrentStepComponent
-          formData={formData}
-          updateFormData={updateFormData}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          goToStep={goToStep}
-          currentStep={currentStep}
-        />
+      <div className="wizard-content" aria-live="polite">
+        <Suspense fallback={<LoadingSpinner message="Loading step..." />}>
+          <CurrentStepComponent
+            formData={formData}
+            updateFormData={updateFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            goToStep={goToStep}
+            currentStep={currentStep}
+          />
+        </Suspense>
       </div>
     </div>
   );

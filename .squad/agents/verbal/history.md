@@ -42,3 +42,7 @@
 - Form validation testing: submit empty/invalid forms, assert error messages appear, verify nextStep not called
 - Navigation testing: fill valid data, click Next/Back, assert correct step rendered
 - All tests pass consistently with fast execution (~5s full suite)
+- PR #18 (Draft) covers Phase 4 Tasks 4.7, 4.8, 4.9 (UI polish, accessibility, performance) - WIP
+- Created LoadingSpinner component: reusable, accessible (role=status, aria-live=polite), animated
+- LoadingSpinner positioned at `src/components/LoadingSpinner/` with co-located CSS
+- Component pattern: functional components with props for customization (e.g., message prop)

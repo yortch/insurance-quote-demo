@@ -183,7 +183,7 @@ function QuoteReview({ formData, prevStep, goToStep }) {
       </div>
 
       {error && (
-        <div className="error-message">
+        <div className="error-message" role="alert" aria-live="assertive">
           <p>
             <strong>Error:</strong> {error}
           </p>
