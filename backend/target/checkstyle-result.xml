@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.21.4">
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\Application.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\config\GlobalExceptionHandler.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\config\package-info.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\config\WebConfig.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\controller\HealthController.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\controller\package-info.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\controller\QuoteController.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\exception\QuoteNotFoundException.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\CoverageLevel.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\ErrorResponse.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\InsuranceType.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\package-info.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\Quote.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\QuoteMapper.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\QuoteRequest.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\QuoteResponse.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\model\QuoteStatus.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\repository\package-info.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\repository\QuoteRepository.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\service\package-info.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\service\QuoteCalculationService.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\main\java\com\threeriverinsurance\service\QuoteService.java">
+</file>
+<file name="C:\Users\jbalderas\source\repos\squad-demo\backend\src\test\resources\application.properties">
+</file>
+</checkstyle>

@@ -35,5 +35,16 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Run tests
+        run: npm test
+
       - name: Build
         run: npm run build
+
+      - name: Generate and upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-coverage-report
+          path: frontend/coverage/
+          retention-days: 30
