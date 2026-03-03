@@ -46,3 +46,4 @@
 - Created LoadingSpinner component: reusable, accessible (role=status, aria-live=polite), animated
 - LoadingSpinner positioned at `src/components/LoadingSpinner/` with co-located CSS
 - Component pattern: functional components with props for customization (e.g., message prop)
+- README.md updated (2026-03-03) with: architecture overview, ERD diagram, API reference, premium calculation logic, local dev profile docs, setup and running instructions

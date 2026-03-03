@@ -40,5 +40,6 @@
 - **Security test patterns:** @WebMvcTest with @AutoConfigureMockMvc(addFilters = false) for controller unit tests to bypass security; @SpringBootTest with @AutoConfigureMockMvc for integration tests loads full security context automatically
 - **Security headers verification:** Test security headers (X-Frame-Options, Content-Security-Policy) on response; HSTS only applies to HTTPS requests (not in test mode with HTTP)
 - **Spring Security dependencies:** spring-boot-starter-security for runtime, spring-security-test for test support; both required for MockMvc security testing with @WithMockUser and .with(csrf())
+- **Local profile pattern:** Added `local` Spring profile with H2 in-memory database for local development; developers can run app with `-Dspring.profiles.active=local` to avoid needing PostgreSQL locally. H2 dependency scope changed to `runtime` (was `test`) to support both test and local profiles. Local profile enables H2 console at `/h2-console`, uses `create-drop` ddl-auto for fresh schema on restart, and shows SQL for debugging.
 
 

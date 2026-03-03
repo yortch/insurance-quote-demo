@@ -234,6 +234,61 @@ Part of Phase 4 Tasks 4.7 (UI Polish), 4.8 (Accessibility), 4.9 (Performance)
 
 ---
 
+## Local Development Profile with H2
+
+**Author:** Fenster (🔧 Backend Dev)  
+**Date:** 2026-03-03  
+**Scope:** Backend
+
+### Decision
+
+Added a `local` Spring profile that uses H2 in-memory database for local development:
+
+- **H2 dependency scope:** Changed from `test` to `runtime` in pom.xml to make H2 available for both test and local profiles
+- **Profile configuration:** Added new `local` profile section in application.yml (between default and test profiles)
+  - Database: `jdbc:h2:mem:insurance_quote` (in-memory)
+  - DDL mode: `create-drop` (fresh schema on each restart)
+  - SQL logging: enabled (`show-sql: true`)
+  - H2 console: enabled at `/h2-console` for easy data inspection
+- **Default profile:** PostgreSQL configuration remains unchanged
+- **Test profile:** H2 test configuration remains unchanged
+
+### Rationale
+
+- **Developer experience:** Removes barrier to entry for new developers who don't have PostgreSQL installed locally
+- **Rapid prototyping:** H2 in-memory database provides instant startup with no setup required
+- **Debugging support:** H2 console allows developers to inspect data structure and contents during development
+- **Zero impact:** Existing test and production configurations are untouched; purely additive change
+- **Consistency:** Uses Spring's standard multi-document YAML format for profile separation
+
+### Usage
+
+Developers can run the application locally without PostgreSQL:
+
+```bash
+mvn spring-boot:run -Dspring-profiles.active=local
+```
+
+Or set environment variable:
+```bash
+export SPRING_PROFILES_ACTIVE=local
+mvn spring-boot:run
+```
+
+Access H2 console at `http://localhost:8080/h2-console` with:
+- JDBC URL: `jdbc:h2:mem:insurance_quote`
+- Username: (leave blank or use sa)
+- Password: (leave blank)
+
+### Impact
+
+- New developers can start coding immediately without database setup
+- Reduced friction in local development workflow
+- H2 console provides visibility into schema and data during development
+- Production deployment remains unchanged (uses PostgreSQL via default profile)
+
+---
+
 ## Phase 2 Frontend — Quote Wizard Architecture
 
 **Author:** Verbal (⚛️ Frontend Dev)  
