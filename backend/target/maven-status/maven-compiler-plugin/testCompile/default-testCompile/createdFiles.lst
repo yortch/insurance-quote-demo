@@ -1,7 +1,0 @@
-com\threeriverinsurance\QuoteIntegrationTest.class
-com\threeriverinsurance\service\QuoteCalculationServiceTest.class
-com\threeriverinsurance\service\QuoteServiceTest.class
-com\threeriverinsurance\ApplicationTests.class
-com\threeriverinsurance\testutil\TestDataFactory.class
-com\threeriverinsurance\controller\QuoteControllerTest.class
-com\threeriverinsurance\testutil\TestDataFactory$QuoteRequestBuilder.class
