@@ -36,5 +36,9 @@
 - **Deductible discount logic:** $1000 deductible gets 5% discount (>= 1000 condition in QuoteCalculationService); test assertions must account for this
 - **Integration test profile:** Use @ActiveProfiles("test") on @SpringBootTest integration tests to use H2 in-memory DB instead of PostgreSQL
 - **Premium calculation verification:** Monthly premium = base × coverage × (1 - deductible discount) × type factor; annual = monthly × 12 × 0.95 (5% annual discount)
+- **Spring Security REST API pattern:** Use SecurityFilterChain bean with CSRF disabled for stateless REST APIs; configure security headers (X-Frame-Options, CSP, HSTS) via headers() DSL; permit all API endpoints when no authentication is required
+- **Security test patterns:** @WebMvcTest with @AutoConfigureMockMvc(addFilters = false) for controller unit tests to bypass security; @SpringBootTest with @AutoConfigureMockMvc for integration tests loads full security context automatically
+- **Security headers verification:** Test security headers (X-Frame-Options, Content-Security-Policy) on response; HSTS only applies to HTTPS requests (not in test mode with HTTP)
+- **Spring Security dependencies:** spring-boot-starter-security for runtime, spring-security-test for test support; both required for MockMvc security testing with @WithMockUser and .with(csrf())
 
 
