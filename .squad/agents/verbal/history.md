@@ -29,3 +29,16 @@
 - Professional insurance styling: blue (#1a5276) primary, green (#27ae60) for CTAs, clean cards with shadows
 - Client-side quote calculation: base rate + multipliers for age/size/coverage/deductible
 - Stepper UI: visual progress indicator with numbered circles, active/completed states
+- PR #14 covers Phase 4 Task 4.2 (frontend component and unit tests)
+- Test infrastructure: Vitest 3.x with jsdom environment for React component testing
+- Testing Library stack: @testing-library/react, @testing-library/jest-dom, @testing-library/user-event
+- Test setup: `frontend/src/test/setup.js` imports jest-dom matchers globally
+- Vite config extended with `test` block: globals: true, environment: 'jsdom', setupFiles
+- Test scripts: `npm test` (run once), `npm test:watch` (watch mode)
+- Test organization: co-located with source files (.test.jsx alongside .jsx components)
+- Test coverage: 44 tests across QuoteWizard (6), CustomerInfo (11), CoverageSelection (13), quoteApi (14)
+- Component testing pattern: render component, query elements, simulate user events with fireEvent, assert state/DOM
+- API testing pattern: mock global.fetch with vi.fn(), test success/error responses, verify fetch calls
+- Form validation testing: submit empty/invalid forms, assert error messages appear, verify nextStep not called
+- Navigation testing: fill valid data, click Next/Back, assert correct step rendered
+- All tests pass consistently with fast execution (~5s full suite)
