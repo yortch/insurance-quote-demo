@@ -32,4 +32,9 @@
 - **Custom exceptions:** Throw custom exceptions (e.g., QuoteNotFoundException) from service layer; let GlobalExceptionHandler convert to appropriate HTTP responses
 - **CORS configuration:** Use WebMvcConfigurer.addCorsMappings() to configure CORS for API endpoints; set allowedOrigins, allowedMethods, allowedHeaders, and allowCredentials
 - **SpotBugs dead store:** Avoid assigning variables that are never read; in updateQuote, call findById().orElseThrow() directly without storing the result
+- **Test data factory pattern:** Use builder pattern for test data creation (TestDataFactory with fluent withX() methods) for flexible, readable test setup
+- **Deductible discount logic:** $1000 deductible gets 5% discount (>= 1000 condition in QuoteCalculationService); test assertions must account for this
+- **Integration test profile:** Use @ActiveProfiles("test") on @SpringBootTest integration tests to use H2 in-memory DB instead of PostgreSQL
+- **Premium calculation verification:** Monthly premium = base × coverage × (1 - deductible discount) × type factor; annual = monthly × 12 × 0.95 (5% annual discount)
+
 
